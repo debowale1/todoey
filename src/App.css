@@ -1,0 +1,16 @@
+body {
+  background-color: #f8f9fa;
+}
+
+.navbar {
+  border-bottom: 1px solid #f4f4f4;
+}
+
+.card.add-todo {
+  padding: 50px;
+}
+
+.card.current-tasks,
+.card.completed-tasks {
+  padding: 30px 15px;
+}
