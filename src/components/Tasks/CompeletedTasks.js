@@ -5,7 +5,7 @@ const CompletedTasks = (props) => {
   return (
     <React.Fragment>
       <li className="list-group-item">
-        <input type="checkbox" className="form-check-input" />
+        <input type="checkbox" className="form-check-input" checked />
         <label
           style={{ textDecoration: "line-through" }}
           className="form-check-label"

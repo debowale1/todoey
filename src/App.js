@@ -8,12 +8,21 @@ class App extends Component {
   state = {
     tasks: [
       { id: 1, title: "Learn React", completed: false },
-      { id: 2, title: "Vestibulum at eros", completed: false },
-      { id: 3, title: "Lorem Ipsum dolot", completed: false },
-      { id: 4, title: "Test Vuejs", completed: false },
-      { id: 5, title: "Flog teacher mike", completed: false },
-      { id: 6, title: "Visit Kilimanjaro tomorrow", completed: false },
+      { id: 2, title: "Test Vuejs", completed: false },
+      { id: 3, title: "Visit Kilimanjaro tomorrow", completed: false },
     ],
+  };
+  //Add new task
+  handleAddTask = (title) => {
+    const newTask = {
+      id: Math.floor(Math.random() * 1000000),
+      title,
+      completed: false,
+    };
+
+    this.setState({
+      tasks: [...this.state.tasks, newTask],
+    });
   };
   //mark task as completed on change
   handleTaskCompleteChange = (id) => {
@@ -38,7 +47,7 @@ class App extends Component {
       <div className="App">
         <Header branding="TODOEY" />
         <div className="container">
-          <AddTask />
+          <AddTask handleAddTask={this.handleAddTask} />
           <Tasks
             tasks={tasks}
             handleTaskCompleteChange={this.handleTaskCompleteChange}
