@@ -27,6 +27,11 @@ class App extends Component {
     });
   };
   //delete task on delete clicked
+  handleTaskDelete = (id) => {
+    this.setState({
+      tasks: this.state.tasks.filter((task) => task.id !== id),
+    });
+  };
   render() {
     const { tasks } = this.state;
     return (
@@ -37,6 +42,7 @@ class App extends Component {
           <Tasks
             tasks={tasks}
             handleTaskCompleteChange={this.handleTaskCompleteChange}
+            handleTaskDelete={this.handleTaskDelete}
           />
         </div>
       </div>

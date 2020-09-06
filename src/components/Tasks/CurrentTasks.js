@@ -11,7 +11,12 @@ const CurrentTasks = (props) => {
           onChange={props.handleTaskCompleteChange.bind(this, id)}
         />
         <label className="form-check-label">{title}</label>
-        <button type="button" className="close" aria-label="Close">
+        <button
+          type="button"
+          className="close"
+          aria-label="Close"
+          onClick={props.handleTaskDelete.bind(this, id)}
+        >
           <span aria-hidden="true">&times;</span>
         </button>
       </li>

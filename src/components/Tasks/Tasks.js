@@ -31,6 +31,7 @@ class Tasks extends Component {
                   key={task.id}
                   task={task}
                   handleTaskCompleteChange={this.props.handleTaskCompleteChange}
+                  handleTaskDelete={this.props.handleTaskDelete}
                 />
               ))}
             </ul>
@@ -41,7 +42,11 @@ class Tasks extends Component {
           <div className="card completed-tasks">
             <ul className="list-group list-group-flush">
               {completedTasks.map((task) => (
-                <CompletedTasks key={task.id} task={task} />
+                <CompletedTasks
+                  key={task.id}
+                  task={task}
+                  handleTaskDelete={this.props.handleTaskDelete}
+                />
               ))}
             </ul>
           </div>

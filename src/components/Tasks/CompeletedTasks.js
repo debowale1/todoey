@@ -1,7 +1,7 @@
 import React from "react";
 
 const CompletedTasks = (props) => {
-  const { title } = props.task;
+  const { title, id } = props.task;
   return (
     <React.Fragment>
       <li className="list-group-item">
@@ -12,7 +12,12 @@ const CompletedTasks = (props) => {
         >
           {title}
         </label>
-        <button type="button" className="close" aria-label="Close">
+        <button
+          type="button"
+          className="close"
+          aria-label="Close"
+          onClick={props.handleTaskDelete.bind(this, id)}
+        >
           <span aria-hidden="true">&times;</span>
         </button>
       </li>
