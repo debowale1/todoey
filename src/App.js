@@ -7,18 +7,28 @@ import "./App.css";
 class App extends Component {
   state = {
     tasks: [
-      { id: 1, title: "Learn React", completed: true },
+      { id: 1, title: "Learn React", completed: false },
       { id: 2, title: "Vestibulum at eros", completed: false },
-      { id: 3, title: "Lorem Ipsum dolot", completed: true },
+      { id: 3, title: "Lorem Ipsum dolot", completed: false },
       { id: 4, title: "Test Vuejs", completed: false },
       { id: 5, title: "Flog teacher mike", completed: false },
       { id: 6, title: "Visit Kilimanjaro tomorrow", completed: false },
     ],
   };
+  //mark task as completed on change
+  handleTaskCompleteChange = (id) => {
+    this.setState({
+      tasks: this.state.tasks.filter((task) => {
+        if (task.id === id) {
+          task.completed = true;
+        }
+        return task;
+      }),
+    });
+  };
+  //delete task on delete clicked
   render() {
     const { tasks } = this.state;
-    const completedTasks = tasks.filter((task) => task.completed === true);
-    const uncompletedTasks = tasks.filter((task) => task.completed === false);
     return (
       <div className="App">
         <Header branding="TODOEY" />
@@ -26,8 +36,7 @@ class App extends Component {
           <AddTask />
           <Tasks
             tasks={tasks}
-            completedTasks={completedTasks}
-            uncompletedTasks={uncompletedTasks}
+            handleTaskCompleteChange={this.handleTaskCompleteChange}
           />
         </div>
       </div>

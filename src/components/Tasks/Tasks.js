@@ -3,14 +3,17 @@ import TaskOverview from "./TaskOverview";
 import CurrentTasks from "./CurrentTasks";
 import CompletedTasks from "./CompeletedTasks";
 
-class Todos extends Component {
+class Tasks extends Component {
   render() {
-    const { tasks, completedTasks, uncompletedTasks } = this.props;
-    const totalCompletedTasks = tasks.filter((task) => task.completed === true)
-      .length;
-    const totalUncompletedTasks = tasks.filter(
-      (task) => task.completed === false
-    ).length;
+    const { tasks } = this.props;
+    //get all completed tasks
+    const completedTasks = tasks.filter((task) => task.completed === true);
+    //get all uncompleted tasks
+    const uncompletedTasks = tasks.filter((task) => task.completed === false);
+    //total completed tasks
+    const totalCompletedTasks = completedTasks.length;
+    //total uncompleted tasks
+    const totalUncompletedTasks = uncompletedTasks.length;
     return (
       <div className="row mt-5">
         <div className="col-md-3">
@@ -24,7 +27,11 @@ class Todos extends Component {
           <div className="card current-tasks">
             <ul className="list-group list-group-flush">
               {uncompletedTasks.map((task) => (
-                <CurrentTasks key={task.id} task={task} />
+                <CurrentTasks
+                  key={task.id}
+                  task={task}
+                  handleTaskCompleteChange={this.props.handleTaskCompleteChange}
+                />
               ))}
             </ul>
           </div>
@@ -44,4 +51,4 @@ class Todos extends Component {
   }
 }
 
-export default Todos;
+export default Tasks;
